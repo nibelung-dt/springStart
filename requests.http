@@ -1,0 +1,4 @@
+http://localhost:8080/greeting
+http://localhost:8080/greeting?name=User
+http://localhost:8080/get_user
+http://localhost:8080/put_user
