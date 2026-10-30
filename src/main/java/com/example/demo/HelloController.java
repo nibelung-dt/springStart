@@ -4,13 +4,10 @@ import com.example.demo.models.Greeting;
 import com.example.demo.models.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.concurrent.atomic.AtomicLong;
 
 
-//@SpringBootApplication
 @RestController
 public class HelloController {
 
@@ -46,23 +43,5 @@ public class HelloController {
         System.out.print("counter = " + counter + "/n");
 
         return new Greeting(counter.incrementAndGet(), template.formatted(name));
-    }
-
-    @GetMapping("/get_user")
-    public User getUser() {
-        return new User(1, "dfd");
-    }
-
-    @PostMapping("/put_user")
-    public User putUser(@RequestBody User user) {
-        log.info("user = {}", user);
-
-        UserEntity entity = new UserEntity();
-        entity.setId(user.id());
-        entity.setName(user.name());
-
-        UserEntity saved = userRepository.save(entity);
-
-        return new User(saved.getId(), saved.getName());
     }
 }
