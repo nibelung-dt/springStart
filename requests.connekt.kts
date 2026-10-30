@@ -29,3 +29,15 @@ POST("http://localhost:8080/put_user") {
         """.trimIndent()
     )
 }
+
+POST("http://localhost:8080/put_user") {
+    header("Content-Type", "application/json")
+    body(
+        """
+        {
+        "id": -1,
+        "name": "Ivan"
+        }
+        """.trimIndent()
+    )
+}

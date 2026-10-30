@@ -1,6 +1,9 @@
-package com.example.demo;
+package com.example.demo.controllers;
 
+import com.example.demo.UserEntity;
+import com.example.demo.UserRepository;
 import com.example.demo.models.User;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -42,7 +45,7 @@ public class UserController {
 
 
     @PostMapping("/put_user")
-    public User putUser(@RequestBody User user) {
+    public User putUser(@RequestBody @Valid User user) {
         log.info("user = {}", user);
 
         UserEntity entity = new UserEntity();
