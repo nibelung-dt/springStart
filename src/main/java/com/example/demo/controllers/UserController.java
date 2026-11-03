@@ -27,14 +27,14 @@ public class UserController {
     @GetMapping("/get_user/{id}")
     public ResponseEntity<User> getUserById(@PathVariable long id) {
         return userRepository.findById(id)
-                .map(entity -> ResponseEntity.ok(new User(entity.getId(), entity.getName())))
+                .map(entity -> ResponseEntity.ok(new User(entity.getId(), entity.getName(), entity.getAge())))
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @GetMapping("/get_all_users")
     public ResponseEntity<List<User>> getAllUsers() {
         List<User> users = userRepository.findAll().stream()
-                .map(entity -> new User(entity.getId(), entity.getName()))
+                .map(entity -> new User(entity.getId(), entity.getName(), entity.getAge()))
                 .toList();
 
         if (users.isEmpty()) {
@@ -54,6 +54,6 @@ public class UserController {
 
         UserEntity saved = userRepository.save(entity);
 
-        return new User(saved.getId(), saved.getName());
+        return new User(saved.getId(), saved.getName(), saved.getAge());
     }
 }

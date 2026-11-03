@@ -24,19 +24,20 @@ POST("http://localhost:8080/put_user") {
         """
         {
         "id": 1,
-        "name": "Ivan"
+        "name": "Ivan",
+        "age": 20
         }
         """.trimIndent()
     )
 }
-
 POST("http://localhost:8080/put_user") {
     header("Content-Type", "application/json")
     body(
         """
         {
         "id": -1,
-        "name": "Ivan"
+        "name": "Ivan",
+        "age": -20
         }
         """.trimIndent()
     )

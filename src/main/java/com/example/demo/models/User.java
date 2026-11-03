@@ -10,5 +10,9 @@ public record User(
         Long id,
 
         @NotBlank(message = "Имя не может быть пустым")
-        String name
+        String name,
+
+        @NotBlank(message = "Возраст не может быть пустым")
+        @Positive(message = "Возраст должен быть положительным")
+        int age
 ) { }
